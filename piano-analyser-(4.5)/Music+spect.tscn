@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://lyy86pte2q1v"]
+
+[ext_resource type="PackedScene" uid="uid://bq3huk364skd3" path="res://Analyzer.tscn" id="1_jdxrx"]
+[ext_resource type="AudioStream" uid="uid://cofvs766vp0lv" path="res://FULLSONG.wav" id="2_q0os4"]
+
+[node name="Music+spect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" parent="." instance=ExtResource("1_jdxrx")]
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q0os4")
+volume_db = 10.71
+autoplay = true

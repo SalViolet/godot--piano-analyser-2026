@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bq3huk364skd3"]
+
+[ext_resource type="Script" uid="uid://gid8d6a1us62" path="res://Audiobars.gd" id="2_eqdk8"]
+
+[node name="Control" type="Control" unique_id=1272554]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=282139760]
+layout_mode = 0
+offset_left = 828.0
+offset_top = 461.0
+offset_right = 1149.0
+offset_bottom = 645.0
+script = ExtResource("2_eqdk8")

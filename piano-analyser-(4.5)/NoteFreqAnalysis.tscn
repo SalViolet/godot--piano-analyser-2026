@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://crjuol2hhaeeq"]
+
+[ext_resource type="Script" uid="uid://bfntuves1jwjq" path="res://loading_analyzer.gd" id="1_55mi1"]
+[ext_resource type="AudioStream" uid="uid://dqncvm8pwj43j" path="res://addons/AllKeys.mp3" id="2_g04iu"]
+
+[node name="Node2D" type="Node2D" unique_id=1698745800]
+
+[node name="LoadingAnalyzer" type="Node" parent="." unique_id=1563671446]
+script = ExtResource("1_55mi1")
+
+[node name="LoadingPlayer" type="AudioStreamPlayer" parent="." unique_id=648876840]
+stream = ExtResource("2_g04iu")
+pitch_scale = 4.0
+autoplay = true
+bus = &"Quick analyisis"
+
+[connection signal="finished" from="LoadingPlayer" to="LoadingAnalyzer" method="_on_loading_player_finished"]

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://qxgu5o0w2xt2"]
+
+[ext_resource type="Script" uid="uid://bj0vh160f23t0" path="res://on_time_player.gd" id="5_gfgrj"]
+[ext_resource type="PackedScene" uid="uid://biyoa20cdv5ii" path="res://DragAndDrop.tscn" id="6_3ko3r"]
+[ext_resource type="Script" uid="uid://dirlp7hc5tvm1" path="res://sensitivity_slider.gd" id="7_kstlc"]
+[ext_resource type="AudioStream" uid="uid://dmevyugi1o4a6" path="res://HAPPYBIRTHDAY.wav" id="7_vo521"]
+[ext_resource type="PackedScene" uid="uid://bq3huk364skd3" path="res://Analyzer.tscn" id="8_dpx4l"]
+[ext_resource type="Script" uid="uid://dit810dcs4fa5" path="res://PianoFinal.gd" id="11_avabn"]
+[ext_resource type="Script" uid="uid://utv7io7jqg3x" path="res://color_rect.gd" id="12_avabn"]
+
+[node name="Node2D" type="Node2D" unique_id=771796115]
+
+[node name="OnTimePlayer" type="AudioStreamPlayer" parent="." unique_id=315972846]
+stream = ExtResource("7_vo521")
+script = ExtResource("5_gfgrj")
+
+[node name="Drag+drop" parent="." unique_id=1221042966 instance=ExtResource("6_3ko3r")]
+
+[node name="Corner Freq (Analyzer)" parent="." unique_id=479976476 instance=ExtResource("8_dpx4l")]
+
+[node name="Control" type="Control" parent="." unique_id=1399071220]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 81.0
+script = ExtResource("11_avabn")
+
+[node name="RefRect" type="ColorRect" parent="Control" unique_id=1939688244]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 593.0
+offset_right = 704.0
+offset_bottom = 633.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("12_avabn")
+
+[node name="Label" type="Label" parent="." unique_id=378815031]
+offset_left = 258.0
+offset_top = 377.0
+offset_right = 664.0
+offset_bottom = 400.0
+text = "Drop music anywhere to analyze"
+
+[node name="SliderLabel" type="Label" parent="." unique_id=673349359]
+offset_left = 63.0
+offset_top = 537.0
+offset_right = 469.0
+offset_bottom = 560.0
+text = "Ajust sensitivity (higher sensitivity = less notes taken in)"
+
+[node name="SensitivitySlider" type="HSlider" parent="." unique_id=1067825772]
+offset_left = 38.0
+offset_top = 580.0
+offset_right = 658.0
+offset_bottom = 603.0
+min_value = -0.04
+max_value = 0.04
+step = 0.001
+script = ExtResource("7_kstlc")
+
+[connection signal="finished" from="OnTimePlayer" to="Control" method="_on_on_time_player_finished"]
+[connection signal="drag_ended" from="SensitivitySlider" to="Control" method="_on_sensitivity_slider_drag_ended"]
+[connection signal="value_changed" from="SensitivitySlider" to="Control" method="_on_sensitivity_slider_value_changed"]
